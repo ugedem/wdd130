@@ -10,17 +10,59 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
+    main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
 
+    form {
+      background-color: #f4f4f4;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      display: grid;
+      grid-gap: 15px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
 
     #feedback {
-      background-color: antiquewhite;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: .5em;
-      /* make this element invisible until we are ready for it */
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+      padding: .75rem 1.25rem;
+      border-radius: .25rem;
       display: none;
+      margin-top: 10px;
     }
 
     .moveDown {
@@ -31,27 +73,22 @@
 
 <body>
   <header>
-    <h1> Asquared</h1>
+    <h1>Asquared</h1>
     <h2>Aaron Edem</h2>
     <h2>WDD 130-B9</h2>
   </header>
   <main>
     <div id="feedback"></div>
     <form action="/my-handling-form-page" method="post">
-      <ul>
-        <li>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="user_name" />
-        </li>
-        <li>
-          <label for="mail">Email:</label>
-          <input type="email" id="mail" name="user_email" />
-        </li>
-        <li>
-          <label for="msg">Message:</label>
-          <textarea id="msg" name="user_message"></textarea>
-        </li>
-      </ul>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="user_name" />
+
+      <label for="mail">Email:</label>
+      <input type="email" id="mail" name="user_email" />
+
+      <label for="msg">Message:</label>
+      <textarea id="msg" name="user_message"></textarea>
+
       <input type="submit" value="Submit">
     </form>
   </main>
@@ -59,7 +96,7 @@
   <footer>
     <p>Asquared Properties &copy; 2023 - Aaron Edem</p>
     <p><a href="site-plan.html">Site Plan</a></p>
-    <p><a href="aboutme.html">about me</a></p>
+    <p><a href="aboutme.html">About Me</a></p>
     <p><a href="index.html">Homepage</a></p>
     <div class="social">
       <a href="https://facebook.com" target="_blank">
@@ -75,19 +112,13 @@
   </footer>
 
   <script>
-    // get the feedback div element so we can do something with it.
     const feedbackElement = document.getElementById('feedback');
-    // get the form so we can read what was entered in it.
     const formElement = document.forms[0];
-    // add a 'listener' to wait for a submission of our form. When that happens run the code below.
+
     formElement.addEventListener('submit', function (e) {
-      // stop the form from doing the default action.
       e.preventDefault();
-      // set the contents of our feedback element to a message letting the user know the form was submitted successfully. Notice that we pull the name that was entered in the form to personalize the message!
       feedbackElement.innerHTML = 'Hello ' + formElement.user_name.value + '! Thank you for your message. We will get back with you ASAP!!!!!';
-      // make the feedback element visible.
       feedbackElement.style.display = "block";
-      // add a class to move everything down so our message doesn't cover it.
       document.body.classList.toggle('moveDown');
     });
   </script>
